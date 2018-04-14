@@ -1,0 +1,62 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2" id="m_login">
+  <div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
+     <div class="m-login__container">
+        <div class="m-login__logo">
+           <a href="#">
+           <img src="./assets/app/media/img//logos/logo-1.png">
+           </a>
+        </div>
+        <div class="m-login__signin">
+           <div class="m-login__head">
+              <h3 class="m-login__title">
+                 Money Time
+              </h3>
+           </div>
+           <form (ngSubmit)="f.form.valid" #f="ngForm" class="m-login__form m-form">
+           <div class="form-group m-form__group">
+              <input class="form-control m-input" email placeholder="Email" name="email" [(ngModel)]="loginForm.email" #email="ngModel" autocomplete="off">
+              <error-feedback 
+              [showError]="verifyFieldIntegrity(email)"
+              [messageError]="'Hey, preencha o campo e-mail'">
+              </error-feedback>
+           </div>
+           <div class="form-group m-form__group">
+              <input required class="form-control m-input m-login__form-input--last" type="password" placeholder="Senha" name="password" [(ngModel)]="loginForm.password" #password="ngModel">
+              <error-feedback 
+              [showError]="verifyFieldIntegrity(password)"
+              [messageError]="'Hey, preencha o campo senha'">
+              </error-feedback>
+           </div>
+           <div class="row m-login__form-sub default-cursor">
+              <div class="col m--align-left m-login__form-left">
+                 <label class="m-checkbox  m-checkbox--focus">
+                 <input type="checkbox" name="remember" [(ngModel)]="loginForm.remember" #remember="ngModel">
+                 Lembrar-me
+                 <span></span>
+                 </label>
+              </div>
+              <div class="col m--align-right m-login__form-right">
+                 <a routerLink="/usuario/nova-senha" id="m_login_forget_password" class="m-link ">
+                 Esqueceu sua senha ?
+                 </a>
+              </div>
+           </div>
+           <div class="m-login__form-action">
+              <button (click)="onSignIn()" [disabled]="loading || f.invalid" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">
+              Login
+              </button>
+           </div>
+           </form>
+        </div>
+        <div class="m-login__account default-cursor">
+           <span class="m-login__account-msg">
+           Ainda não tem uma conta ?
+           </span>
+           &nbsp;&nbsp;
+           <a routerLink="/usuario/registro" id="m_login_signup" class="m-link m-link--light m-login__account-link">
+           Registre-se
+           </a>
+        </div>
+     </div>
+  </div>
+</div>
